@@ -1,0 +1,17 @@
+# Worst Case Analysis
+
+## Task 0
+O(1) - Constant time. The Time complexity does not depend on the size of the input.
+
+## Task 1
+O(n) - Linear time. Considering n = sum of items in the calls and texts arrays.
+
+## Task 2
+O(n) - Linear time. Considering n = number of items in the calls array.
+
+## Task 3
+A - O(nlog(n)) - Loglinear time. Considering n = number of items in the calls array.
+B - O(n) - Linear time. Considering n = number of items in the calls array.
+
+## Task 4
+O(n) - Linear time. Considering n = sum of items in the calls and texts arrays.
