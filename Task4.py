@@ -27,6 +27,7 @@ The list of numbers should be print out one per line in lexicographic order with
 possible_telemarketers = set()
 for call in calls:
     possible_telemarketers.add(call[0])
+for call in calls:
     possible_telemarketers.discard(call[1])
 
 for text in texts:
@@ -34,5 +35,5 @@ for text in texts:
     possible_telemarketers.discard(text[1])
 
 print("These numbers could be telemarketers: ")
-for phone_number in list(possible_telemarketers):
+for phone_number in sorted(possible_telemarketers):
   print(phone_number)

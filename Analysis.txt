@@ -14,4 +14,4 @@ A - O(nlog(n)) - Loglinear time. Considering n = number of items in the calls ar
 B - O(n) - Linear time. Considering n = number of items in the calls array.
 
 ## Task 4
-O(n) - Linear time. Considering n = sum of items in the calls and texts arrays.
+O(nlog(n))  - Loglinear time. Considering n = sum of items in the calls and texts arrays.

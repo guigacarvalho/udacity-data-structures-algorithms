@@ -50,19 +50,29 @@ code_set = set()
 for call in calls:
   if "(080)" in call[0]:
     if call[1].startswith("(0"):
-      code_set.add( call[1][1:call[1].find(")")] )
-
-code_list = list(code_set)
-code_list.sort()
-
+      code_set.add(call[1][1:call[1].find(")")])
+    if call[1].startswith("140"):
+      code_set.add("140")
+    if (
+      call[1].startswith("7") or
+      call[1].startswith("8") or
+      call[1].startswith("9")
+      ):
+      code_set.add(call[1][0:4])
+    
 print("The numbers called by people in Bangalore have codes:")
-for code in code_list:
+for code in sorted(code_set):
   print(code)
 
 # B: Find percentage of calls from Bangalore
 fixed_line_calls=0
-for call in calls:
-  if " " not in call[0] or " " not in call[1] :
-    fixed_line_calls+=1
+total_fixed_line_calls=0
 
-print(format(fixed_line_calls/len(calls)*100, ".2f"), "percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")
+for call in calls:
+  if "(080)" in call[0]:
+    total_fixed_line_calls+=1
+    if "(080)" in call[1]:
+      fixed_line_calls +=1
+percentage = (fixed_line_calls/total_fixed_line_calls)*100
+
+print(format(percentage, ".2f"), "percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")

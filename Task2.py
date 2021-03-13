@@ -26,10 +26,7 @@ for call in calls:
     phone_dict.update({ call[0]: acc_call_duration_0 })
     phone_dict.update({ call[1]: acc_call_duration_1 })
 
-longest_time = 0
-for phone, duration in phone_dict.items():
-    if duration > longest_time:
-        longest_time = duration
-        longest_time_phone_number = phone
+longest_time_phone_number = max(phone_dict, key=lambda x:phone_dict.get(x))
+longest_time = phone_dict.get(longest_time_phone_number)
 
 print(longest_time_phone_number, "spent the longest time,", longest_time, "seconds, on the phone during September 2016.")
