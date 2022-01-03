@@ -1,17 +1,60 @@
 # Worst Case Analysis
 
 ## Task 0
-O(1) - Constant time. The Time complexity does not depend on the size of the input.
+Worse case complexity: O(1) - Constant time. 
+Algorithm:
+- Read csv file contents into texts and calls array (not considered on the time complexity calculation)
+- Read and print information on the first element of the texts array
+- Read and print information on the last element of the calls array
+
+The Time complexity does not depend on the size of the input because only one operation is necessary to fetch the item needed from the array.
+
 
 ## Task 1
-O(n) - Linear time. Considering n = sum of items in the calls and texts arrays.
+Worse case complexity: O(n) - Linear time. 
+Algorithm:
+- Read csv file contents into texts and calls array (not considered on the time complexity calculation)
+- Loop through all texts records and add phone numbers to a set, which won't allow duplicates.
+- Perform the same procedure for the calls array, adding phone numbers to the same set.
+
+The time complexity depends on the size of the array n = sum of items in the calls and texts arrays.
 
 ## Task 2
-O(n) - Linear time. Considering n = number of items in the calls array.
+Worse case complexity: O(n) - Linear time.
+Algorithm:
+- Read csv file contents in the calls array (not considered on the time complexity calculation)
+- Loop through all the call records and add phone numbers to a dictionary that contains the phone and the accumulated call duration. This would require 4*n operations.
+- Search for the phone number with accumulated call duration maximum. Another task that takes n operations.
+
+Ultimately, summing up the time complexities, we'd have O(5n) = O(n), considering n = number of items in the calls array.
 
 ## Task 3
-A - O(nlog(n)) - Loglinear time. Considering n = number of items in the calls array.
-B - O(n) - Linear time. Considering n = number of items in the calls array.
+### Part A
+Worse case complexity: O(nlog(n)) - Loglinear time. 
+Algorithm:
+- Read csv file contents in the calls array (not considered on the time complexity calculation)
+- Loop through call records and select those whose caller number starts with (080).
+- Add to the prefixes set (code_set) the fixed lines, mobile numbers and telemarketers by parsing the callee number. (~ n operations).
+- Sort the prefixes and print them out
+
+O(n + nlon(n)) = O(nlog(n)), considering n = number of items in the calls array.
+
+### Part B
+Worse case complexity: B - O(n) - Linear time. 
+Algorithm:
+- Loop through the calls array and sum up the total_fixed_line_calls from Bangalore. 
+- In the same loop, sum up all the callees that are also fixed lines from Bangalore. O(2n)
+- Calculate the percentage. O(1)
+
+Since we are looping through the array once with two operations inside O(2n+1) = O(n), considering n = number of items in the calls array.
 
 ## Task 4
-O(nlog(n))  - Loglinear time. Considering n = sum of items in the calls and texts arrays.
+Worse case complexity: O(nlog(n))  - Loglinear time.
+Algorithm:
+- Read csv file contents in the calls array (not considered on the time complexity calculation)
+- Loop through the calls array and add all the possible callers to the telemarketers set. O(n)
+- Loop through the calls array and discard all the numbers that received a call. O(n)
+- Loop through the texts array and discard all of the numbers that sent or recevied texts. O(m)
+- Print a sorted list of telemarketers. O((nlon(n)))
+
+Calculating the overall complexity, we have O(2n+m+nlog(n)) = O(nlog(n)), considering n = number of items in the calls and  m = number of items in the texts arrays.
